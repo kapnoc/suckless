@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Terminus:pixelsize=10:antialias=true:autohint=true";
+static char font[] = "Terminus:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 #define histsize 2000
 
@@ -86,24 +86,24 @@ static unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#31363b",
+	"#ed1515",
+	"#11d116",
+	"#f67400",
+	"#1d99f3",
+	"#9b59b6",
+	"#1abc9c",
+	"#eff0f1",
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	"#7f8c8d",
+	"#c0392b",
+	"#1cdc9a",
+	"#fdbc4b",
+	"#3daee9",
+	"#8e44ad",
+	"#16a085",
+	"#fcfcfc",
 
 	[255] = 0,
 
@@ -129,7 +129,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 4;
 
 /*
  * Default colour and shape of the mouse cursor
