@@ -61,7 +61,7 @@ static const struct arg args[] = {
 	{ cpu_perc,    " %3s%%]  ",      NULL },
 	{ ram_bar,     "[RAM (%s)",      NULL },
 	{ ram_perc,    " %2s%%]  ",      NULL },
-	{ swap_perc,   "[SWAP %2s%%]  ", NULL },
+//	{ swap_perc,   "[SWAP %2s%%]  ", NULL },
 	{ temp,        "[TEMP0 %2s°C ",  "/sys/class/thermal/thermal_zone0/temp" },
 	{ temp,        "TEMP1 %2s°C]  ", "/sys/class/thermal/thermal_zone1/temp" },
 	{ disk_perc,   "[/ %3s%%]  ",    "/" },
