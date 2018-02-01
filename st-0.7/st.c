@@ -82,7 +82,7 @@ char *argv0;
 				(t1.tv_nsec-t2.tv_nsec)/1E6)
 #define MODBIT(x, set, bit)	((set) ? ((x) |= (bit)) : ((x) &= ~(bit)))
 
-#define USE_ARGB (alpha != OPAQUE)
+#define USE_ARGB 1//(alpha != OPAQUE)
 
 #define TRUECOLOR(r,g,b)	(1 << 24 | (r) << 16 | (g) << 8 | (b))
 #define IS_TRUECOL(x)		(1 << 24 & (x))
@@ -311,6 +311,7 @@ typedef struct {
 } Shortcut;
 
 /* function definitions used in config.h */
+static void invert_transp(const Arg *);
 static void clipcopy(const Arg *);
 static void clippaste(const Arg *);
 static void kscrolldown(const Arg *);
@@ -570,6 +571,14 @@ typedef struct {
 /* Fontcache is an array now. A new font will be appended to the array. */
 static Fontcache frc[16];
 static int frclen = 0;
+
+void
+invert_transp(const Arg *a)
+{
+	alpha = (alpha ? 0 : tmpalpha);
+	xloadcols();
+	redraw();
+}
 
 ssize_t
 xwrite(int fd, const char *s, size_t len)
