@@ -5,8 +5,10 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Terminus:pixelsize=14:antialias=true:autohint=true";
-static int borderpx = 2;
+//static char font[] = "Terminus:pixelsize=13:antialias=true:autohint=true";
+static char font[] = "Terminus:pixelsize=14:antialias=false:autohint=false";
+/* static char font[] = "LucidaTypewriter:style=Sans"; */
+static int borderpx = 22;
 #define histsize 2000
 
 /*
@@ -87,42 +89,78 @@ static int alpha = 0xff;
 static const int tmpalpha = 0xff;
 
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	"#111111",
-	"#ed1515",
-	"#11d116",
-	"#f67400",
-	"#1d99f3",
-	"#9b59b6",
-	"#1abc9c",
-	"#eff0f1",
+ const char *colorname[] = {
 
-	/* 8 bright colors */
-	"#7f8c8d",
-	"#c0392b",
-	"#1cdc9a",
-	"#fdbc4b",
-	"#3daee9",
-	"#8e44ad",
-	"#16a085",
-	"#fcfcfc",
+  /* 8 normal colors */
+  [0] = "#1c2023", /* black   */
+  [1] = "#c7ae95", /* red     */
+  [2] = "#95c7ae", /* green   */
+  [3] = "#aec795", /* yellow  */
+  [4] = "#ae95c7", /* blue    */
+  [5] = "#c795ae", /* magenta */
+  [6] = "#95aec7", /* cyan    */
+  [7] = "#c7ccd1", /* white   */
 
-	[255] = 0,
+  /* 8 bright colors */
+  [8]  = "#747c84", /* black   */
+  [9]  = "#c7ae95", /* red     */
+  [10] = "#95c7ae", /* green   */
+  [11] = "#aec795", /* yellow  */
+  [12] = "#ae95c7", /* blue    */
+  [13] = "#c795ae", /* magenta */
+  [14] = "#95aec7", /* cyan    */
+  [15] = "#6d6d6d", /* white   */
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+  /* special colors */
+  [256] = "#f3f4f5", /* background */
+  [257] = "#565e65", /* foreground */
 };
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor
+ */
+ unsigned int defaultfg = 257;
+ unsigned int defaultbg = 256;
+ unsigned int defaultcs = 257;
+
+/* /\* Terminal colors (16 first used in escape sequence) *\/ */
+/* static const char *colorname[] = { */
+/* 	/\* 8 normal colors *\/ */
+/* 	"#111111", */
+/* 	"#ed1515", */
+/* 	"#11d116", */
+/* 	"#f67400", */
+/* 	"#1d99f3", */
+/* 	"#9b59b6", */
+/* 	"#1abc9c", */
+/* 	"#eff0f1", */
+
+/* 	/\* 8 bright colors *\/ */
+/* 	"#7f8c8d", */
+/* 	"#c0392b", */
+/* 	"#1cdc9a", */
+/* 	"#fdbc4b", */
+/* 	"#3daee9", */
+/* 	"#8e44ad", */
+/* 	"#16a085", */
+/* 	"#fcfcfc", */
+
+/* 	[255] = 0, */
+
+/* 	/\* more colors can be added after 255 to use with DefaultXX *\/ */
+/* 	"#cccccc", */
+/* 	"#555555", */
+/* }; */
 
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-static unsigned int defaultfg = 7;
-static unsigned int defaultbg = 0;
-static unsigned int defaultcs = 256;
+/* static unsigned int defaultfg = 7; */
+/* static unsigned int defaultbg = 0; */
+/* static unsigned int defaultcs = 256; */
 static unsigned int defaultrcs = 257;
 
 /*
