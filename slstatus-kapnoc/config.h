@@ -54,6 +54,8 @@ static const char bar_empty = ' ';
  */
 static const struct arg args[] = {
 	/* function format          argument */
+	{ battery_bar, " [BAT (%s)",     "BAT0" },
+	{ battery_perc," %3s%%] ",        "BAT0" },
 	{ datetime,    "[%s];",          "%F %T" },
 	{ username,    "[%s",            NULL },
 	{ hostname,    "@%s]  ",         NULL },
@@ -66,6 +68,4 @@ static const struct arg args[] = {
 	{ temp,        "TEMP1 %2s°C]  ", "/sys/class/thermal/thermal_zone1/temp" },
 	{ disk_perc,   "[/ %3s%%]  ",    "/" },
 	{ disk_perc,   "[/home %3s%%] ", "/home" },
-	{ battery_bar, " [BAT (%s)",     "BAT0" },
-	{ battery_perc," %3s%%]",        "BAT0" },
 };
