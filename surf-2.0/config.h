@@ -6,6 +6,8 @@ static char *styledir       = "~/.surf/styles/";
 static char *cachedir       = "~/.surf/cache/";
 static char *cookiefile     = "~/.surf/cookies.txt";
 
+#define HOMEPAGE "http://kapno.cc/homepage"
+
 static SearchEngine searchengines[] = {
 	{ "g",   "http://www.google.de/search?q=%s"   },
 	{ "s",   "https://www.startpage.com/do/dsearch?query=%s"   },
