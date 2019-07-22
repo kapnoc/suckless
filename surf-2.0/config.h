@@ -6,6 +6,15 @@ static char *styledir       = "~/.surf/styles/";
 static char *cachedir       = "~/.surf/cache/";
 static char *cookiefile     = "~/.surf/cookies.txt";
 
+static SearchEngine searchengines[] = {
+	{ "g",   "http://www.google.de/search?q=%s"   },
+	{ "wiki", "https://www.wikipedia.org/search-redirect.php?family=wikipedia&language=en&search=%s&language=en&go=Go" },
+	{ "wikifr", "http://fr.wikipedia.org/wiki/Special:Recherche?search=%s" },
+	{ "wikifi", "https://www.wikipedia.org/search-redirect.php?family=wikipedia&language=fi&search=%s&language=fi&go=Go" },
+	{ "enfi", "https://translate.google.com/?source=osdd#en|fi|%s" },
+	{ "fien", "https://translate.google.com/?source=osdd#fi|en|%s" },
+};
+
 /* Webkit default features */
 static Parameter defconfig[ParameterLast] = {
 	SETB(AcceleratedCanvas,  1),
