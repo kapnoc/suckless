@@ -123,8 +123,8 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_r,      reload,     { .b = 1 } },
 	{ MODKEY,                GDK_KEY_r,      reload,     { .b = 0 } },
 
-	{ MODKEY,                GDK_KEY_l,      navigate,   { .i = +1 } },
-	{ MODKEY,                GDK_KEY_h,      navigate,   { .i = -1 } },
+	{ MODKEY|GDK_SHIFT_MASK,                GDK_KEY_l,      navigate,   { .i = +1 } },
+	{ MODKEY|GDK_SHIFT_MASK,                GDK_KEY_h,      navigate,   { .i = -1 } },
 
 	/* Currently we have to use scrolling steps that WebKit2GTK+ gives us
 	 * d: step down, u: step up, r: step right, l:step left
@@ -133,15 +133,15 @@ static Key keys[] = {
 	{ MODKEY,                GDK_KEY_k,      scroll,     { .i = 'u' } },
 	{ MODKEY,                GDK_KEY_b,      scroll,     { .i = 'U' } },
 	{ MODKEY,                GDK_KEY_space,  scroll,     { .i = 'D' } },
-	{ MODKEY,                GDK_KEY_i,      scroll,     { .i = 'r' } },
-	{ MODKEY,                GDK_KEY_u,      scroll,     { .i = 'l' } },
+	{ MODKEY,                GDK_KEY_l,      scroll,     { .i = 'r' } },
+	{ MODKEY,                GDK_KEY_h,      scroll,     { .i = 'l' } },
 
 
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_j,      zoom,       { .i = -1 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_k,      zoom,       { .i = +1 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_q,      zoom,       { .i = 0  } },
+	//{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_j,      zoom,       { .i = -1 } },
+	//{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_k,      zoom,       { .i = +1 } },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_equal,      zoom,       { .i = +1  } },
 	{ MODKEY,                GDK_KEY_minus,  zoom,       { .i = -1 } },
-	{ MODKEY,                GDK_KEY_plus,   zoom,       { .i = +1 } },
+	{ MODKEY,                GDK_KEY_equal,   zoom,       { .i = 0 } },
 
 	{ MODKEY,                GDK_KEY_p,      clipboard,  { .b = 1 } },
 	{ MODKEY,                GDK_KEY_y,      clipboard,  { .b = 0 } },
