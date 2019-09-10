@@ -16,6 +16,7 @@ static SearchEngine searchengines[] = {
 	{ "wikifi", "https://www.wikipedia.org/search-redirect.php?family=wikipedia&language=fi&search=%s&language=fi&go=Go" },
 	{ "enfi", "https://translate.google.com/?source=osdd#en|fi|%s" },
 	{ "fien", "https://translate.google.com/?source=osdd#fi|en|%s" },
+	{ "suoen", "https://www.suomienglantisanakirja.fi/#/%s" },
 };
 
 /* Webkit default features */
