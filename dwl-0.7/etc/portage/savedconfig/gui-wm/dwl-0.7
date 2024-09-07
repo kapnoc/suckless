@@ -12,15 +12,17 @@ static const unsigned int gappx            = 8; /* gap pixel between windows */
 static const unsigned int borderpx         = 2;  /* border pixel of windows */
 static const int showbar                   = 1; /* 0 means no bar */
 static const int topbar                    = 1; /* 0 means bottom bar */
-static const char *fonts[]                 = {"monospace:size=10"};
+static const char *fonts[]                 = {"Hack-Regular:size=10:antialias=true:autohint=false"};
 static const float rootcolor[]             = COLOR(0x000000ff);
 static const float unfocuseddim[]          = COLOR(0x00000088);
+static const int trayspacing               = 4; /* Spacing between icons in system tray */
+static const int traymargins               = 4; /* System tray inner margins */
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
 static uint32_t colors[][3]                = {
 	/*               fg          bg          border    */
 	[SchemeNorm] = { 0xbbbbbbff, 0x222222ff, 0x444444ff },
-	[SchemeSel]  = { 0xeeeeeeff, 0x005577ff, 0x005577ff },
+	[SchemeSel]  = { 0x222222ff, 0xa3be8cff, 0xa3be8cff },
 	[SchemeUrg]  = { 0,          0,          0x770000ff },
 };
 
@@ -34,6 +36,7 @@ static int log_level = WLR_ERROR;
 /* Autostart */
 static const char *const autostart[] = {
         "swaybg", "-i", "/home/tanguy/Pictures/wallpapers/wallpaper3.jpg", "-m", "fill", NULL,
+        "/usr/libexec/org_kde_powerdevil", NULL,
         NULL /* terminate */
 };
 
@@ -65,7 +68,7 @@ static const MonitorRule monrules[] = {
 	{ "eDP-1",    0.5f,  1,      2,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 	*/
 	/* defaults */
-	{ NULL,       0.55f, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
+	{ NULL,       0.55f, 1,      1.3,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 };
 
 /* keyboard */
@@ -136,17 +139,31 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[] = { "st", NULL };
+static const char *termcmd[] = { "foot", NULL };
 static const char *menucmd[] = { "rofi", "-show", "run", NULL };
+static const char *lockcmd[] = { "/usr/libexec/kscreenlocker_greet", NULL };
+static const char *brightupcmd[] = { "doas", "/usr/bin/brightnessctl", "set", "10%+", NULL };
+static const char *brightdowncmd[] = { "doas", "/usr/bin/brightnessctl", "set", "10%-", NULL };
+static const char *mutecmd[] = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *volumeupcmd[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "-l", "1", "5%+", NULL };
+static const char *volumedowncmd[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "5%-", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_l,          spawn,          {.v = lockcmd} },
+	{ 0,                         XKB_KEY_XF86MonBrightnessUp, spawn, {.v = brightupcmd} },
+	{ 0,                         XKB_KEY_XF86MonBrightnessDown, spawn, {.v = brightdowncmd} },
+	{ 0,                         XKB_KEY_XF86AudioMute, spawn,       {.v = mutecmd} },
+	{ 0,                         XKB_KEY_XF86AudioRaiseVolume, spawn, {.v = volumeupcmd} },
+	{ 0,                         XKB_KEY_XF86AudioLowerVolume, spawn, {.v = volumedowncmd} },
 	{ MODKEY,                    XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_J,          movestack,      {.i = +1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_K,          movestack,      {.i = -1} },
 	{ MODKEY,                    XKB_KEY_i,          incnmaster,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_h,          setmfact,       {.f = -0.05f} },

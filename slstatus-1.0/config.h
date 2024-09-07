@@ -67,7 +67,7 @@ static const struct arg args[] = {
 	/* function format          argument */
 	/* { username,		" | %s",			NULL }, */
 	/* { hostname,		"@%s",				NULL }, */
-	{ run_command,		"^fg(a3be8c)VOL: %s%%",		"wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d ' ' -f 2-" },
+	{ run_command,		" ^fg(a3be8c)VOL: %s%%",		"wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d ' ' -f 2-" },
 	{ cpu_perc,		"^fg() | ^fg()CPU: %s%%",	NULL },
 	{ cpu_freq,		" %s",				NULL },
 	{ temp,			" %sC",				"/sys/class/thermal/thermal_zone0/temp" },
@@ -84,5 +84,5 @@ static const struct arg args[] = {
 	/* { netspeed_tx,		" OUT %s",		"wlp1s0" }, */
 	{ battery_perc,		"^fg() | ^fg(a3be8c)BAT: %s%%",	"BAT1" },
 	{ battery_state,	" %s",				"BAT1" },
-	{ datetime,		"^fg() | ^fg()%s        ",	"%F %T^fg()" },
+	{ datetime,		"^fg() | ^fg()%s ",	"%F %T^fg()" },
 };
