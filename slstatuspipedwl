@@ -1,0 +1,3 @@
+#!/bin/sh
+gentoo-pipewire-launcher &
+/usr/local/bin/slstatus -s | exec dbus-run-session ssh-agent /usr/bin/dwl
